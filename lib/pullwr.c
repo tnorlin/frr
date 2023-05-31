@@ -268,8 +268,9 @@ void pullwr_stats(struct pullwr *pullwr, uint64_t *total_written,
 
 	*total_written = pullwr->total_written;
 	*pending = pullwr->valid;
-
+        /* Try without this unknown 
 	if (ioctl(pullwr->fd, TIOCOUTQ, &tmp) != 0)
 		tmp = 0;
+	*/
 	*kernel_pending = tmp;
 }

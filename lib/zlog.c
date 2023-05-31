@@ -529,12 +529,12 @@ size_t zlog_msg_ts(struct zlog_msg *msg, char *out, size_t outsz,
 		if (flags & ZLOG_TS_UTC) {
 			msg->ts_zonetail[0] = 'Z';
 			msg->ts_zonetail[1] = '\0';
-		} else
+		} /*else  don't care
 			snprintfrr(msg->ts_zonetail, sizeof(msg->ts_zonetail),
 				   "%+03d:%02d",
 				   (int)(tm.tm_gmtoff / 3600),
 				   (int)(labs(tm.tm_gmtoff) / 60) % 60);
-
+                  */
 		msg->ts_dot = msg->ts_str + strlen(msg->ts_str);
 		snprintfrr(msg->ts_dot,
 			   msg->ts_str + sizeof(msg->ts_str) - msg->ts_dot,
