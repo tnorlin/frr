@@ -174,6 +174,27 @@ an example)
         --with-pkg-git-version \
         --with-pkg-extra-version=-MyOwnFRRVersion
     gmake
+
+Create "classic" Solaris packages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+    mkdir  -p /var/tmp/frr-7.5/etc/frr/
+    gmake DESTDIR=/var/tmp/frr-7.5 install
+    cp zebra/zebra.conf.sample bgpd/bgpd.conf.sample bgpd/bgpd.conf.sample2 ripd/ripd.conf.sample ripngd/ripngd.conf.sample ospfd/ospfd.conf.sample ospf6d/ospf6d.conf.sample /var/tmp/frr-7.5/etc/frr/
+    cp solaris/str.h solaris/pqueue.h /var/tmp/frr-7.5/usr/local/include/frr/
+    cp /usr/sadm/install/scripts/i.manifest solaris/
+    cp /usr/sadm/install/scripts/r.manifest solaris7
+    cd solaris/
+    gmake DESTDIR=/var/tmp/frr-7.5 packages
+
+
+Install FRR locally
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
     gmake check
     sudo gmake install
 
